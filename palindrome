@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <algorithm>
+bool isPalindrome(const std::string& s) {
+    std::string cleaned;
+    // Remove non-alphanumeric characters and convert to lowercase
+    for (char c : s) {
+        if (std::isalnum(c)) {
+            cleaned += std::tolower(c);
+        }
+    }
+    // Check if the cleaned string is equal to its reverse
+    std::string reversed(cleaned.rbegin(), cleaned.rend());
+    return cleaned == reversed;
+}
+int main() {
+    std::string text = "A man, a plan, a canal, Panama";
+    std::cout << (isPalindrome(text) ? "true" : "false") << std::endl;  // Output: true
+    return 0;
+}
